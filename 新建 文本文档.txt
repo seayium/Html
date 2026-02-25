@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gladcats</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 第一屏：图片区域 */
+        .hero {
+            position: relative;
+            width: 100%;
+        }
+
+        .hero img {
+            width: 100%;
+            height: auto;          /* 保证图片完整 */
+            display: block;
+        }
+
+        /* 文字覆盖层 */
+        .overlay {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+        }
+
+        .overlay h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .overlay p {
+            font-size: 20px;
+        }
+
+        /* 第二部分内容 */
+        .section {
+            padding: 80px 10%;
+            background-color: #f5f5f5;
+        }
+
+        .section h2 {
+            font-size: 32px;
+        }
+
+        .section p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- 第一部分：完整图片 -->
+    <section class="hero">
+        <img src="background.jpg" alt="Background">
+
+        <div class="overlay">
+            <h1>Bienvenue sur Gladcats</h1>
+            <p>Améliorer le bien-être des animaux et de leurs propriétaires.</p>
+        </div>
+    </section>
+
+    <!-- 第二部分：可滚动内容 -->
+    <section class="section">
+        <h2>Notre Mission</h2>
+        <p>
+            Nous facilitons le lien entre les propriétaires et leurs animaux 
+            grâce à des services personnalisés, des conseils professionnels 
+            et une communauté engagée.
+        </p>
+    </section>
+
+</body>
+</html>
