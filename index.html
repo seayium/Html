@@ -205,7 +205,22 @@
   color: rgba(0,0,0,0.72);
   line-height: 1.5;
 }
+.hero{
+  position: relative;
+}
 
+.search-block{
+  position: absolute;
+  top: 30%;                 /* 你可以调 58%~66% */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(1000px, 92%);
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  padding: 22px;
+  z-index: 10;
+}
 /* Optional bullet list */
 .ideas{
   margin: 12px 0 0;
@@ -221,6 +236,29 @@
   margin: 12px auto; /* 居中 */
   max-width: 180px;  /* ✅ 防止太宽 */
   object-fit: contain;
+}
+.mission-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.mission-text{
+  max-width: 600px;
+}
+
+.mission-images{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mission-images img{
+  height: 100px;
+  width: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }  </style>
 </head>
 
@@ -277,72 +315,81 @@
           
     </div>
 <!-- ===== Bloc central (style Rover) ===== -->
-  <div class="search-block">
+    <div class="search-block">
 
-    <h3 class="search-title">Faciliter les liens des propriétaires avec leurs animaux</h3>
+      <h3 class="search-title">Faciliter les liens des propriétaires avec leurs animaux</h3>
 
-    <!-- Tabs / Cards -->
-    <div class="tabs">
-      <button class="tab active">
-        <i class="fa-solid fa-house"></i>
-        Adoption
-      </button>
+      <!-- Tabs / Cards -->
+      <div class="tabs">
+        <button class="tab active">
+          <i class="fa-solid fa-house"></i>
+          Adoption
+        </button>
 
-      <button class="tab">
-        <i class="fa-solid fa-stethoscope"></i>
-        Pros & soins
-      </button>
+        <button class="tab">
+          <i class="fa-solid fa-stethoscope"></i>
+          Pros & soins
+        </button>
 
-      <button class="tab">
-        <i class="fa-solid fa-person-walking"></i>
-        Petits jobs
-      </button>
+        <button class="tab">
+          <i class="fa-solid fa-person-walking"></i>
+          Petits jobs
+        </button>
 
-      <button class="tab">
-        <i class="fa-solid fa-bag-shopping"></i>
-        Produits
-      </button>
+        <button class="tab">
+          <i class="fa-solid fa-bag-shopping"></i>
+          Produits
+        </button>
 
-      <button class="tab">
-        <i class="fa-solid fa-people-group"></i>
-        Meet-up
-      </button>
-    </div>
-
-    <!-- Fake input + big button -->
-    <div class="search-row">
-      <div class="field">
-        <label>Besoin / recherche</label>
-        <input type="text" placeholder="Ex : promener mon chien, trouver un vétérinaire, adopter..." />
+        <button class="tab">
+          <i class="fa-solid fa-people-group"></i>
+          Meet-up
+        </button>
       </div>
 
-      <button class="cta">
-        Découvrir
-      </button>
+      <!-- Fake input + big button -->
+      <div class="search-row">
+        <div class="field">
+          <label>Besoin / recherche</label>
+          <input type="text" placeholder="Ex : promener mon chien, trouver un vétérinaire, adopter..." />
+        </div>
+
+        <button class="cta">
+          Découvrir
+        </button>
+      </div>
+
+      <p class="note">
+        Les difficultés concernent la communication, les soins, le temps disponible, la socialisation et l’accès aux professionnels.
+      </p>
+
+      <!-- Optional: bullet list (from your image 2) -->
+      <ul class="ideas">
+        <li>Faire adopter les animaux aux futurs propriétaires</li>
+        <li>Mettre en lien des vétérinaires, coachs et professionnels avec les propriétaires</li>
+        <li>Proposer des petits jobs : promener les chiens, garder les animaux</li>
+        <li>Proposer des produits : aspirateur à poils, vases personnalisés, etc.</li>
+        <li>Organiser des meet-up : professionnels vs propriétaires + activités (sorties, concours…)</li>
+      </ul>
+
+    </div>
+<section class="section">
+  <div class="mission-container">
+
+    <!-- 左边文字 -->
+    <div class="mission-text">
+      <h2>Notre mission</h2>
+      <p>Contenu de démonstration…</p>
     </div>
 
-    <p class="note">
-      Les difficultés concernent la communication, les soins, le temps disponible, la socialisation et l’accès aux professionnels.
-    </p>
-
-    <!-- Optional: bullet list (from your image 2) -->
-    <ul class="ideas">
-      <li>Faire adopter les animaux aux futurs propriétaires</li>
-      <li>Mettre en lien des vétérinaires, coachs et professionnels avec les propriétaires</li>
-      <li>Proposer des petits jobs : promener les chiens, garder les animaux</li>
-      <li>Proposer des produits : aspirateur à poils, vases personnalisés, etc.</li>
-      <li>Organiser des meet-up : professionnels vs propriétaires + activités (sorties, concours…)</li>
-    </ul>
+    <!-- 右边图片 -->
+    <div class="mission-images">
+      <img src="logo1.jpg" alt="image 1">
+      <img src="logo2.png" alt="image 2">
+    </div>
 
   </div>
-  </section>
-
-  <section class="section">
-    <h2>Notre mission</h2>
-    <p>Contenu de démonstration…</p>
-    
-  </section>
+</section>
 
 </body>
 </html>
-
