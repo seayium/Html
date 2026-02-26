@@ -8,6 +8,7 @@
   <!-- Icons (Font Awesome) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+
   <style>
     body{ margin:0; font-family: Arial, sans-serif; }
 
@@ -199,7 +200,7 @@
 
 .search-block{
   position: absolute;
-  top: 40%;                 /* 你可以调 58%~66% */
+  top: 32%;                 /* 你可以调 58%~66% */
   left: 50%;
   transform: translate(-50%, -50%);
   width: min(1000px, 92%);
@@ -235,36 +236,77 @@
 .mission-text{
   max-width: 600px;
 }
-
-.mission-images{
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+/* Mission: 只留文字 */
+.section.mission{
+  padding: 80px 10%;
+  background: #f5f5f5;
+}
+/* Actions: 新栏目 */
+.section.actions{
+  padding: 30px 10% 10px;
+  background: #ffffff;
 }
 
-.mission-images img{
-  height: 100px;
-  width: auto;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-.mission-item{
-  display: flex;
-  flex-direction: column;
-  align-items: center;   /* ⭐ 保证中心对齐 */
-}
-
-.mission-item p{
+.actions-sub{
   margin-top: 10px;
-  margin-bottom: 0;      /* 防止额外空间 */
-  text-align: center;
-  line-height: 1.2;      /* 防止视觉偏移 */
-}.mission-item img{
-  width: 100px;
-  height: 100px;      /* ⭐ 统一高度 */
-  object-fit: cover;  /* ⭐ 自动裁剪填充 */
-  border-radius: 20px;
-}  </style>
+  color: rgba(0,0,0,0.65);
+}
+/* ===== Credit size control (只改这里) ===== */
+:root{
+  --credit-icon-box: 120px;   /* 左侧图标列的“格子”大小：越大越显眼 */
+  --credit-icon: 80px;       /* 图标实际大小：一般比格子小 10~14px */
+  --credit-gap: 12px;        /* 图标与文字的间距 */
+  --credit-width: 360px;     /* 每行宽度，保证两行文字起点一致 */
+}
+
+/* ===== Credit layout ===== */
+.credit-box{
+  margin-top: 12px;
+  margin-left: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  font-size: 14px;
+  color: rgba(0,0,0,0.65);
+}
+
+.credit-item{
+  display: grid;
+  grid-template-columns: var(--credit-icon-box) auto;
+  align-items: center;
+  column-gap: var(--credit-gap);
+  width: var(--credit-width);
+}
+
+.credit-icon{
+  width: var(--credit-icon-box);
+  height: 80px;
+  display: grid;
+  place-items: center;
+}
+
+.credit-icon img{
+  width: var(--credit-icon);
+  height: var(--credit-icon);
+  object-fit: contain;
+  display: block;
+}
+
+.credit-item span{
+  line-height: 1.2;
+  text-align: left;
+  white-space: nowrap; /* 想自动换行就删掉这行 */
+}
+
+.credit-text{
+  margin-top: 2px;
+  margin-left: calc(var(--credit-icon-box) + var(--credit-gap));
+  font-size: 11px;
+  color: rgba(0,0,0,0.5);
+}
+
+ </style>
 </head>
 
 <body>
@@ -316,7 +358,7 @@
     <img src="background.jpg" alt="Background">
     <div class="overlay">
           <h1>Bienvenue sur Petship</h1>
-          <p>Améliorer le bien-être des animaux et de leurs propriétaires.</p>
+          <p>Améliorer le bien-être des animaux et de leurs propriétaires</p>
           
     </div>
 <!-- ===== Bloc central (style Rover) ===== -->
@@ -378,32 +420,34 @@
       </ul>
 
     </div>
-<section class="section">
-  <div class="mission-container">
-
-    <!-- 左边文字 -->
-    <div class="mission-text">
-      <h2>Notre mission</h2>
-      <p>Contenu de démonstration…</p>
+<section class="section mission">
+  <h2>Notre mission</h2>
+  <p>Petship facilite l'adoption responsable de chiens et de chats et accompagne chaque propriétaire à chaque étape de la vie de son animal.</p>
+  <p>Grâce à nos spécialistes diplômés, nos conseils personnalisés et nos ressources éducatives, nous aidons nos utilisateurs à nourrir, éduquer et comprendre leur compagnon pour lui offrir une vie saine et joyeuse.</p>
+  <p>Au-delà des services, Petship crée une communauté engagée à travers des événements et des rencontres, et propose des opportunités de dogsitting pour encourager lèentraide locale.</p>
+  <h3>Notre objectif: renforcer le lien humain-animale et rendre chaque adoption durable et épanouissante.</h3>
+</section>
+<section class="section actions">
+  <h2>Partenaires</h2>
+  <div class="credit-box">
+  <div class="credit-item">
+    <div class="credit-icon">
+      <img src="logo2.png" alt="">
     </div>
-
-    <!-- 右边图片 -->
-    <div class="mission-images">
-
-      <div class="mission-item">
-        <img src="logo2.png" alt="image 1">
-        <p>Adoption responsable</p>
-      </div>
-
-      <div class="mission-item">
-        <img src="logo2.jpg" alt="image 2">
-        <p>Services professionnels</p>
-     </div>
-
-</div>
-
+    <span>Des vases personnalisés de votre chats</span>
   </div>
+
+  <div class="credit-item">
+    <div class="credit-icon">
+      <img src="logo2.jpg" alt="">
+    </div>
+    <span>Zéro poil, 100% sérénité POLAR-BEAR PetAir: Puissant, intelligent, et conçu pour les vrais amoureux des animaux</span>
+  </div>
+
+  <div class="credit-text"></div>
+</div>
 </section>
 
 </body>
+
 </html>
