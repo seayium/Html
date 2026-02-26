@@ -378,6 +378,8 @@
     <div class="nav-right">
       <a  href="#" onclick="openSignup()">S'inscrire</a>
       <a  href="#" onclick="openSignin()">Se connecter</a>
+      <span id="authStatus" style="margin-left:10px; font-size:12px; opacity:0.7;"></span>
+      <button id="btnSignout" onclick="doSignout()" style="display:none;">Se déconnecter</button>
 
       <div class="nav-sep"></div>
 
@@ -494,9 +496,11 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
     <h2>Se connecter</h2>
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Mot de passe">
-    <button>Connexion</button>
+
+    <input id="signinEmail" type="email" placeholder="Email">
+    <input id="signinPassword" type="password" placeholder="Mot de passe">
+
+    <button onclick="doSignin()">Connexion</button>
   </div>
 </div>
 
@@ -505,12 +509,74 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
     <h2>S’inscrire</h2>
-    <input type="text" placeholder="Nom">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Mot de passe">
-    <button>Créer un compte</button>
+
+    <input id="signupEmail" type="email" placeholder="Email">
+    <input id="signupPassword" type="password" placeholder="Mot de passe">
+
+    <button onclick="doSignup()">Créer un compte</button>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // 1) 替换成你自己的 Supabase 信息
+  const SUPABASE_URL = "https://omiekgevwetodeskxeln.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9taWVrZ2V2d2V0b2Rlc2t4ZWxuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwODQwNTUsImV4cCI6MjA4NzY2MDA1NX0.V4rvRyHIm_sN5VDUS_Rcf6cucHeYkjHgyjjzhAYOk7E";
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // 2) 注册（邮箱 + 密码）
+  async function doSignup() {
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value;
+
+    const { data, error } = await sb.auth.signUp({ email, password });
+    if (error) {
+      alert("Erreur inscription: " + error.message);
+      return;
+    }
+    alert("Inscription OK. Vérifie ton email si la confirmation est activée.");
+    closeModal();
+  }
+
+  // 3) 登录（邮箱 + 密码）
+  async function doSignin() {
+    const email = document.getElementById("signinEmail").value.trim();
+    const password = document.getElementById("signinPassword").value;
+
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) {
+      alert("Erreur connexion: " + error.message);
+      return;
+    }
+    alert("Connecté !");
+    closeModal();
+    updateNavbar();
+  }
+
+  // 4) 登出
+  async function doSignout() {
+    await sb.auth.signOut();
+    alert("Déconnecté.");
+    updateNavbar();
+  }
+
+  // 5) 根据登录状态更新页面（可选）
+  async function updateNavbar() {
+    const { data: { user } } = await sb.auth.getUser();
+    const status = document.getElementById("authStatus");
+    const btnOut = document.getElementById("btnSignout");
+    if (user) {
+      status.textContent = user.email;
+      btnOut.style.display = "inline-block";
+    } else {
+      status.textContent = "";
+      btnOut.style.display = "none";
+    }
+  }
+
+  // 初始化
+  updateNavbar();
+</script>
 </body>
 
 </html>
